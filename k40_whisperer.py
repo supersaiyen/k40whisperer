@@ -38,6 +38,8 @@ import cspsubdiv
 import traceback
 import struct
 
+from pushoverClient import sendPush
+
 DEBUG = False
 
 VERSION = sys.version_info[0]
@@ -2329,6 +2331,7 @@ class Application(Frame):
         self.master.update()
         if self.VcutData.ecoords!=[]:
             self.send_data("Vector_Cut", output_filename)
+            sendPush("Vector Cut Complete", "Laserweb")
         else:
             self.statusbar.configure( bg = 'yellow' )
             self.statusMessage.set("No vector data to cut")
@@ -2342,6 +2345,7 @@ class Application(Frame):
         self.master.update()
         if self.VengData.ecoords!=[]:
             self.send_data("Vector_Eng", output_filename)
+            sendPush("Vector Engrave Complete", "Laserweb")
         else:
             self.statusbar.configure( bg = 'yellow' )
             self.statusMessage.set("No vector data to engrave")
@@ -2357,6 +2361,7 @@ class Application(Frame):
             self.make_raster_coords()
             if self.RengData.ecoords!=[]:
                 self.send_data("Raster_Eng", output_filename)
+                sendPush("Raster Engrave Complete", "Laserweb")
             else:
                 self.statusbar.configure( bg = 'yellow' )
                 self.statusMessage.set("No raster data to engrave")
