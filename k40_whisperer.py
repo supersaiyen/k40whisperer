@@ -341,7 +341,7 @@ class Application(Frame):
 
         self.Reng_feed.set("100")
         self.Veng_feed.set("20")
-        self.Vcut_feed.set("10")
+        self.Vcut_feed.set("5")
         self.Reng_passes.set("1")
         self.Veng_passes.set("1")
         self.Vcut_passes.set("1")
@@ -4041,7 +4041,8 @@ root = Tk()
 app = Application(root)
 app.master.title(title_text)
 app.master.iconname("K40")
-app.master.minsize(800,560) #800x600 min
+app.master.minsize(800,600) #800x600 min
+root.attributes('-zoomed', True)
 
 try:
     app.master.iconbitmap(bitmap="@emblem64")
